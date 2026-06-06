@@ -57,6 +57,8 @@ const payOnceView = document.getElementById("payOnce")
 const payTwiceView = document.getElementById("payTwice")
 const payPerLevelView = document.getElementById("payPerLevel")
 const payOnceDiv = document.getElementById("payOnceDiv")
+const payTwiceDiv = document.getElementById("payTwiceDiv")
+const payPerLevelDiv = document.getElementById("payPerLevelDiv")
 
 detailPlaceholder.innerHTML = "Price Estimation will show here"
 
@@ -82,8 +84,12 @@ function showSelection() {
         // Pay Twice
         const moneySavedTwice = course.tuitionFee * discount.twoInstallment
         const payTwice = course.tuitionFee - moneySavedTwice
+        const mainPayTwice = payTwice / 2
+
         payTwiceView.innerHTML = `<small>Save - ₦${moneySavedTwice.toLocaleString("en-NG")}</small>`
-        // payTwiceView.innerHTML 
+        payTwiceDiv.innerHTML = `Pay twice - ₦${mainPayTwice.toLocaleString("en-NG")}`
+
+        // Pay Per Level
     }
 }
 
