@@ -48,10 +48,16 @@ Object.entries(courses).forEach(([courseId, course]) => {
     option.textContent = course.name
     courseSelect.appendChild(option)
 })
+
 const detailPlaceholder = document.getElementById("detailPlaceholder")
 const displayAcceptance = document.getElementById("displayAcceptanceFee")
 const displayTuition = document.getElementById("displayTuition")
 const displayTuitionDuration = document.getElementById("displayTuitionDuration")
+const payOnceView = document.getElementById("payOnce")
+const payTwiceView = document.getElementById("payTwice")
+const payPerLevelView = document.getElementById("payPerLevel")
+const payOnceDiv = document.getElementById("payOnceDiv")
+
 detailPlaceholder.innerHTML = "Price Estimation will show here"
 
 function showSelection() {
@@ -61,10 +67,23 @@ function showSelection() {
     if (course) {
         courseDetails.innerHTML = `Below is the breakdown  to study ${course.name} for ${course.months} months at ${course.levels} levels <br>`
 
-        displayAcceptance.textContent = `Acceptance fee is ${acceptanceFee.totalAcceptance} which is compulsory to secure your admission`
+        displayAcceptance.textContent = `Acceptance fee is ₦${acceptanceFee.totalAcceptance.toLocaleString("en-NG")} which is compulsory to secure your admission`
 
-        displayTuition.textContent = `Tuition fee  - ${course.tuitionFee}`
+        displayTuition.textContent = `Tuition fee  - ₦${course.tuitionFee.toLocaleString("en-NG")}`
+
         displayTuitionDuration.textContent = `${course.months} months duration - ${course.levels} level(s)`
+
+        // Pay Once
+        const moneySaved = course.tuitionFee * discount.fullPayment
+        const payOnce = course.tuitionFee - moneySaved
+        payOnceView.innerHTML = `<small>Save - ₦${moneySaved.toLocaleString("en-NG")}</small>`
+        payOnceDiv.innerHTML = `Pay once - ₦${payOnce.toLocaleString("en-NG")}`
+
+        // Pay Twice
+        const moneySavedTwice = course.tuitionFee * discount.twoInstallment
+        const payTwice = course.tuitionFee - moneySavedTwice
+        payTwiceView.innerHTML = `<small>Save - ₦${moneySavedTwice.toLocaleString("en-NG")}</small>`
+        // payTwiceView.innerHTML 
     }
 }
 
@@ -72,6 +91,10 @@ courseSelect.addEventListener("change", showSelection)
 showSelection()
 
 // Main calculation
+console.log(discount.fullPayment)
+
+
+
 
 
 
