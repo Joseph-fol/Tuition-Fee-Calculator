@@ -4,6 +4,18 @@ const viewDetailsBtn = document.getElementById("viewDetailsBtn");
 const mainContent = document.querySelector(".main-content");
 const placeholderSection = document.getElementById("placeholderSection");
 const detailsCard = document.getElementById("detailsCard");
+const displayModal = document.getElementById("exampleModal");
+
+let modalInstance;
+
+// Initialize modal when document is ready
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+        modalInstance = new bootstrap.Modal(displayModal);
+    });
+} else {
+    modalInstance = new bootstrap.Modal(displayModal);
+}
 
 const courses = {
     se_mobile: {
@@ -48,10 +60,12 @@ const discount = {
 
 Object.entries(courses).forEach(([courseId, course]) => {
     const option = document.createElement("option");
-    option.value = courseId
-    option.textContent = course.name
-    courseSelect.appendChild(option)
-})
+    option.value = courseId;
+    option.textContent = course.name;
+    courseSelect.appendChild(option);
+});
+
+console.log("Courses loaded:", courseSelect.options.length);
 
 // courseSelect.value = "se_webExpert"
 
@@ -69,11 +83,12 @@ const payPerLevelDiv = document.getElementById("payPerLevelDiv")
 detailPlaceholder.innerHTML = "Price Estimation will show here"
 
 function showSelection() {
-    const selectedCourse = courseSelect.value
-    const course = courses[selectedCourse]
+    const selectedCourse = courseSelect.value;
+    const course = courses[selectedCourse];
+    console.log("showSelection called, selected:", selectedCourse, "course:", course);
 
     if (course) {
-        courseDetails.innerHTML = `Below is the breakdown to study <strong>${course.name}</strong> for ${course.months} months in ${course.levels} level(s).`
+        courseDetails.innerHTML = `Below is the breakdown to study <strong>${course.name}</strong> for ${course.months} months in ${course.levels} level(s).`;
 
         displayAcceptance.textContent = `₦${acceptanceFee.totalAcceptance.toLocaleString("en-NG")}`
 
@@ -105,12 +120,42 @@ function showSelection() {
 courseSelect.addEventListener("change", showSelection)
 showSelection()
 
-// Show details when View Details button is clicked
-viewDetailsBtn.addEventListener("click", function() {
-    placeholderSection.classList.add("hidden");
-    detailsCard.style.display = "block";
-    showSelection();
-})
+// Ensure event listeners are attached when DOM is ready
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("DOM ready, attaching event listeners");
+        if (viewDetailsBtn) {
+            viewDetailsBtn.addEventListener("click", handleViewDetails);
+        }
+    });
+} else {
+    console.log("DOM already loaded, attaching event listeners");
+    if (viewDetailsBtn) {
+        viewDetailsBtn.addEventListener("click", handleViewDetails);
+    }
+}
+
+// Separate handler function for View Details button
+function handleViewDetails(e) {
+    e.preventDefault();
+    console.log("View Details clicked, course value:", courseSelect.value);
+    
+    if (!courseSelect.value || courseSelect.value.trim() === "") {
+        // Show modal if no course is selected
+        console.log("No course selected, showing modal");
+        if (modalInstance) {
+            modalInstance.show();
+        } else {
+            console.error("Modal instance not initialized");
+        }
+    } else {
+        // Show details if course is selected
+        console.log("Course selected, showing details");
+        placeholderSection.classList.add("hidden");
+        detailsCard.style.display = "block";
+        showSelection();
+    }
+}
 
 // Main calculation
 console.log(discount.fullPayment)

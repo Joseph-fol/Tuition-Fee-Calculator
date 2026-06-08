@@ -20,6 +20,7 @@
     --warning-text: #d97706;
 }
 
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     background: linear-gradient(135deg, var(--dark-bg) 0%, var(--sidebar-bg) 100%);
@@ -29,19 +30,24 @@ body {
 }
 
 .container {
-    display: flex;
+    display: flex !important;
     min-height: 100vh;
     gap: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* ============== SIDEBAR ============== */
 .sidebar {
-    width: 40%;
+    width: 40% !important;
+    flex: 0 0 40% !important;
     background: var(--border-gray);
     padding: 60px 45px;
     color: black;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 50px;
 }
 
@@ -152,7 +158,7 @@ body {
 }
 
 .view-details-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .view-details-btn:active {
@@ -161,12 +167,13 @@ body {
 
 /* ============== MAIN CONTENT ============== */
 .main-content {
-    flex: 1;
+    flex: 1 !important;
     padding: 60px 50px;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     transition: opacity 0.4s ease;
+    width: 60% !important;
 }
 
 .placeholder-section {
@@ -440,11 +447,14 @@ body {
 /* ============== RESPONSIVE ============== */
 @media (max-width: 1200px) {
     .sidebar {
-        width: 38%;
+        width: 38% !important;
+        flex: 0 0 38% !important;
         padding: 50px 40px;
     }
 
     .main-content {
+        width: 62% !important;
+        flex: 0 0 62% !important;
         padding: 50px 40px;
     }
 
@@ -455,16 +465,20 @@ body {
 
 @media (max-width: 1024px) {
     .container {
-        flex-direction: column;
+        flex-direction: column !important;
+        width: 100% !important;
     }
 
     .sidebar {
-        width: 100%;
+        width: 100% !important;
+        flex: 0 0 100% !important;
         padding: 40px 30px;
         gap: 40px;
     }
 
     .main-content {
+        width: 100% !important;
+        flex: 0 0 100% !important;
         padding: 40px 30px;
     }
 
@@ -488,16 +502,20 @@ body {
 
 @media (max-width: 768px) {
     .container {
-        flex-direction: column;
+        flex-direction: column !important;
+        width: 100% !important;
     }
 
     .sidebar {
-        width: 100%;
+        width: 100% !important;
+        flex: 0 0 100% !important;
         padding: 30px 20px;
         gap: 30px;
     }
 
     .main-content {
+        width: 100% !important;
+        flex: 0 0 100% !important;
         padding: 30px 20px;
     }
 
@@ -530,12 +548,21 @@ body {
 }
 
 @media (max-width: 480px) {
+    .container {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
     .sidebar {
+        width: 100% !important;
+        flex: 0 0 100% !important;
         padding: 25px 15px;
         gap: 25px;
     }
 
     .main-content {
+        width: 100% !important;
+        flex: 0 0 100% !important;
         padding: 20px 15px;
     }
 
