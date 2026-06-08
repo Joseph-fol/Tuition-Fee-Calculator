@@ -53,7 +53,7 @@ Object.entries(courses).forEach(([courseId, course]) => {
     courseSelect.appendChild(option)
 })
 
-courseSelect.value = "se_webExpert"
+// courseSelect.value = "se_webExpert"
 
 const detailPlaceholder = document.getElementById("detailPlaceholder")
 const displayAcceptance = document.getElementById("displayAcceptanceFee")
