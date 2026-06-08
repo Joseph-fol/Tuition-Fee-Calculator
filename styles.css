@@ -165,15 +165,15 @@ body {
     transform: translateY(0);
 }
 
-/* ============== MAIN CONTENT ============== */
+/*Main Content */
 .main-content {
     flex: 1 !important;
-    padding: 60px 50px;
+    padding: 30px 10px;
     display: flex !important;
     align-items: center;
     justify-content: center;
     transition: opacity 0.4s ease;
-    width: 60% !important;
+    width: 80% !important;
 }
 
 .placeholder-section {
@@ -222,10 +222,10 @@ body {
 .card {
     background: white;
     border-radius: 16px;
-    padding: 50px;
+    padding: 30px;
     border: 1px solid var(--border-gray);
     width: 100%;
-    max-width: 520px;
+    max-width: 650px;
     animation: slideIn 0.4s ease;
 }
 
@@ -245,14 +245,14 @@ body {
     text-align: center;
     margin-bottom: 35px;
     border-bottom: 2px solid var(--light-gray);
-    padding-bottom: 25px;
+    padding-bottom: 10px;
 }
 
 .welcome-header h2 {
     color: var(--orange);
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
     letter-spacing: 0.8px;
     text-transform: uppercase;
 }
@@ -268,11 +268,10 @@ body {
     background: var(--light-gray);
     padding: 18px 20px;
     border-radius: 12px;
-    margin-bottom: 32px;
+    margin-bottom: 23px;
     font-size: 14px;
     line-height: 1.7;
     color: var(--text-light);
-    border-left: 4px solid var(--orange);
 }
 
 .course-description strong {
@@ -280,20 +279,21 @@ body {
     font-weight: 600;
 }
 
-/* ============== FEES SECTION ============== */
 .fees-section {
-    margin-bottom: 35px;
-    background: var(--light-gray);
-    padding: 24px;
+    /* margin-bottom: 35px; */
+    background: #E2E8F0;
+    padding: 30px 24px !important;
     border-radius: 12px;
+    /* line-height: 10px; */
 }
 
 .fee-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 8px;
     padding: 16px 0;
-    border-bottom: 1px solid var(--border-gray);
 }
 
 .fee-item:last-of-type {
@@ -306,25 +306,28 @@ body {
 }
 
 .fee-label {
-    font-size: 13px;
-    color: var(--text-muted);
+    font-size: 14px;
+    color: black;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 .fee-amount {
-    color: var(--blue);
+    color: var(--dark-bg);
     font-size: 24px;
     font-weight: 700;
     letter-spacing: -0.3px;
 }
 
 .fee-note {
-    font-size: 12px;
-    color: var(--text-muted);
+    font-size: 13px;
+    color: var(--dark-bg);
     margin: 0;
     font-weight: 500;
+}
+
+.fee-div{
+    line-height: 20px;
 }
 
 .discount-banner {

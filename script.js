@@ -51,7 +51,6 @@ const acceptanceFee = {
     totalAcceptance: 10000
 }
 
-
 const discount = {
     fullPayment: 0.15,
     twoInstallment: 0.10,
@@ -85,15 +84,13 @@ detailPlaceholder.innerHTML = "Price Estimation will show here"
 function showSelection() {
     const selectedCourse = courseSelect.value;
     const course = courses[selectedCourse];
-    console.log("showSelection called, selected:", selectedCourse, "course:", course);
+    // console.log("showSelection called, selected:", selectedCourse, "course:", course);
 
     if (course) {
         courseDetails.innerHTML = `Below is the breakdown to study <strong>${course.name}</strong> for ${course.months} months in ${course.levels} level(s).`;
 
         displayAcceptance.textContent = `₦${acceptanceFee.totalAcceptance.toLocaleString("en-NG")}`
-
         displayTuition.textContent = `₦${course.tuitionFee.toLocaleString("en-NG")}`
-
         displayTuitionDuration.textContent = `${course.months} months duration - ${course.levels} level(s)`
 
         // Pay Once
@@ -123,13 +120,13 @@ showSelection()
 // Ensure event listeners are attached when DOM is ready
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function() {
-        console.log("DOM ready, attaching event listeners");
+        // console.log("DOM ready, attaching event listeners");
         if (viewDetailsBtn) {
             viewDetailsBtn.addEventListener("click", handleViewDetails);
         }
     });
 } else {
-    console.log("DOM already loaded, attaching event listeners");
+    // console.log("DOM already loaded, attaching event listeners");
     if (viewDetailsBtn) {
         viewDetailsBtn.addEventListener("click", handleViewDetails);
     }
@@ -137,12 +134,8 @@ if (document.readyState === "loading") {
 
 // Separate handler function for View Details button
 function handleViewDetails(e) {
-    e.preventDefault();
-    console.log("View Details clicked, course value:", courseSelect.value);
-    
-    if (!courseSelect.value || courseSelect.value.trim() === "") {
-        // Show modal if no course is selected
-        console.log("No course selected, showing modal");
+    e.preventDefault();    
+    if (!courseSelect.value || courseSelect.value.trim() === "") {    
         if (modalInstance) {
             modalInstance.show();
         } else {
@@ -158,7 +151,7 @@ function handleViewDetails(e) {
 }
 
 // Main calculation
-console.log(discount.fullPayment)
+// console.log(discount.fullPayment)
 
 
 
