@@ -5,51 +5,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Tuition Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Tuition Calculator</h1>
-    <select id="courseSelect">
-        <option value="" selected> Select course</option>
-    </select><br><br>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1>Tuition Calculator</h1>
+            </div>
 
+            <div class="filters-section">
+                <div class="form-group">
+                    <label for="courseSelect" class="filter-icon">
+                        <i class="fas fa-book"></i>
+                    </label>
+                    <select id="courseSelect" class="filter-input">
+                        <option value="">Select course</option>
+                    </select>
+                </div>
 
-    <div id="courseDetails">
-        <p id="detailPlaceholder"></p>
-    </div><br>
+                <div class="form-group">
+                    <label for="campusSelect" class="filter-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </label>
+                    <input type="text" id="campusSelect" class="filter-input" placeholder="Ogbomoso Campus" disabled>
+                </div>
 
-    <div id="displayAcceptanceFee"></div><br>
-    <div id="displayTuition">
+                <button class="view-details-btn" id="viewDetailsBtn">
+                    View Details <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Placeholder -->
+            <div class="placeholder-section" id="placeholderSection">
+                <div class="placeholder-illustration">
+                    <div class="receipt-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <p class="placeholder-text">The price estimate will show here</p>
+                </div>
+            </div>
+
+            <!-- Details Card -->
+            <div class="card" id="detailsCard" style="display: none;">
+                <div class="welcome-header">
+                    <h2>Welcome to</h2>
+                    <h1>SQLi College of ICT.</h1>
+                </div>
+
+                <div id="courseDetails" class="course-description">
+                    <p id="detailPlaceholder">Price Estimation will show here</p>
+                </div>
+
+                <!-- Fees Section -->
+                <div class="fees-section">
+                    <div class="fee-item">
+                        <span class="fee-label">Acceptance fee</span>
+                        <span id="displayAcceptanceFee" class="fee-amount">₦10,000</span>
+                        <p class="fee-note" id="acceptanceNote">Compulsory - This secures your admission.</p>
+                    </div>
+
+                    <div class="fee-item">
+                        <span class="fee-label">Tuition fee</span>
+                        <span id="displayTuition" class="fee-amount">₦900,000</span>
+                        <p class="fee-note" id="displayTuitionDuration">10 months duration - 5 level(s)</p>
+                    </div>
+
+                    <div class="discount-banner">
+                        <span class="discount-icon">
+                            <i class="fas fa-tag"></i>
+                        </span>
+                        <span class="discount-text">Extra 20% discount (Corp Members / IT-SIWES)</span>
+                    </div>
+                </div>
+
+                <!-- Payment Options -->
+                <div class="payment-section">
+                    <h3>Amount To Pay</h3>
+                    <div class="payment-options">
+                        <div class="payment-card">
+                            <p class="payment-type">Pay Once</p>
+                            <p id="payOnceDiv" class="payment-amount">₦765,000</p>
+                            <div id="payOnce" class="payment-save"></div>
+                        </div>
+
+                        <div class="payment-card">
+                            <p class="payment-type">Pay Twice</p>
+                            <p id="payTwiceDiv" class="payment-amount">₦405,000</p>
+                            <div id="payTwice" class="payment-save"></div>
+                        </div>
+
+                        <div class="payment-card">
+                            <p class="payment-type">Pay Per Level</p>
+                            <p id="payPerLevelDiv" class="payment-amount">₦180,000</p>
+                            <div id="payPerLevel" class="payment-save"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-note">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Enjoy 15% off with full payment.</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <small id="displayTuitionDuration"></small><br><br>
 
-
-    <!-- Main Calculation page -->
-    <div>
-        <div>
-            <p id="payOnceDiv"></p>
-            <div id="payOnce">
-
-            </div>
-        </div>
-        <hr>
-        <div>
-            <p id="payTwiceDiv"></p>
-            <div id="payTwice">
-
-            </div>
-        </div>
-        <hr>
-
-        <div>
-            <p id="payPerLevelDiv"></p>
-            <div id="payPerLevel">
-
-            </div>
-        </div>
-    </div>
-
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 
 </html>

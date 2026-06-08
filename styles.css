@@ -1,0 +1,558 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-bg: #1a1942;
+    --sidebar-bg: #2d2a5f;
+    --card-bg: #f8f9fb;
+    --text-dark: #1a1f3a;
+    --text-light: #64748b;
+    --text-muted: #94a3b8;
+    --orange: #f59e0b;
+    --blue: #0ea5e9;
+    --green: #10b981;
+    --light-gray: #f1f5f9;
+    --border-gray: #e2e8f0;
+    --warning-bg: #fef3c7;
+    --warning-text: #d97706;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--sidebar-bg) 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    gap: 0;
+}
+
+/* ============== SIDEBAR ============== */
+.sidebar {
+    width: 40%;
+    background: linear-gradient(180deg, var(--sidebar-bg) 0%, var(--dark-bg) 100%);
+    padding: 60px 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.logo-section {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 20px;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: var(--dark-bg);
+    transition: transform 0.3s ease;
+    border: 2px solid var(--light-gray);
+}
+
+.logo:hover {
+    transform: translateY(-5px);
+}
+
+.logo-section h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.filters-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-icon {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    min-width: 24px;
+    text-align: center;
+}
+
+.filter-input {
+    flex: 1;
+    padding: 13px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.filter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.filter-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--orange);
+}
+
+.filter-input option {
+    background: var(--dark-bg);
+    color: white;
+    padding: 8px;
+}
+
+.filter-input:disabled {
+    background: rgba(255, 255, 255, 0.04);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.view-details-btn {
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--orange) 0%, #f97316 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.view-details-btn:hover {
+    transform: translateY(-2px);
+}
+
+.view-details-btn:active {
+    transform: translateY(0);
+}
+
+/* ============== MAIN CONTENT ============== */
+.main-content {
+    flex: 1;
+    padding: 60px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+}
+
+.placeholder-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.placeholder-section.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.placeholder-illustration {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.receipt-icon {
+    width: 140px;
+    height: 140px;
+    background: var(--light-gray);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: var(--text-muted);
+    border: 2px dashed var(--border-gray);
+}
+
+.placeholder-text {
+    color: var(--text-light);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 0 0 0;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 50px;
+    border: 1px solid var(--border-gray);
+    width: 100%;
+    max-width: 520px;
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-header {
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: 25px;
+}
+
+.welcome-header h2 {
+    color: var(--orange);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.welcome-header h1 {
+    color: var(--text-dark);
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.course-description {
+    background: var(--light-gray);
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-light);
+    border-left: 4px solid var(--orange);
+}
+
+.course-description strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ============== FEES SECTION ============== */
+.fees-section {
+    margin-bottom: 35px;
+    background: var(--light-gray);
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.fee-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.fee-item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.fee-item:first-of-type {
+    padding-top: 0;
+}
+
+.fee-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fee-amount {
+    color: var(--blue);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.fee-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+}
+
+.discount-banner {
+    background: var(--warning-bg);
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--warning-text);
+    font-weight: 600;
+    border: 1px solid rgba(217, 119, 6, 0.2);
+}
+
+.discount-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.discount-text {
+    font-weight: 500;
+}
+
+/* ============== PAYMENT SECTION ============== */
+.payment-section {
+    margin-top: 40px;
+}
+
+.payment-section h3 {
+    color: var(--orange);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+
+.payment-card {
+    background: linear-gradient(135deg, var(--light-gray) 0%, #f3f7fc 100%);
+    padding: 22px 18px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1.5px solid var(--border-gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--orange) 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.payment-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--blue);
+}
+
+.payment-card:hover::before {
+    transform: scaleX(1);
+}
+
+.payment-type {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.payment-amount {
+    color: var(--blue);
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+}
+
+.payment-save {
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 700;
+}
+
+/* ============== FOOTER NOTE ============== */
+.footer-note {
+    text-align: center;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.04) 100%);
+    border-radius: 10px;
+    color: var(--green);
+    font-size: 13px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 38%;
+        padding: 50px 40px;
+    }
+
+    .main-content {
+        padding: 50px 40px;
+    }
+
+    .card {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 40px 30px;
+        gap: 40px;
+    }
+
+    .main-content {
+        padding: 40px 30px;
+    }
+
+    .card {
+        padding: 35px;
+        max-width: 100%;
+    }
+
+    .payment-options {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .logo-section h1 {
+        font-size: 28px;
+    }
+
+    .welcome-header h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 30px 20px;
+        gap: 30px;
+    }
+
+    .main-content {
+        padding: 30px 20px;
+    }
+
+    .card {
+        padding: 25px;
+        max-width: 100%;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
+
+    .logo-section h1 {
+        font-size: 24px;
+    }
+
+    .welcome-header h1 {
+        font-size: 24px;
+    }
+
+    .payment-options {
+        grid-template-columns: 1fr;
+    }
+
+    .fees-section {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 25px 15px;
+        gap: 25px;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .logo-section h1 {
+        font-size: 20px;
+    }
+
+    .welcome-header h1 {
+        font-size: 20px;
+    }
+
+    .welcome-header h2 {
+        font-size: 14px;
+    }
+
+    .payment-amount {
+        font-size: 18px;
+    }
+}

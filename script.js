@@ -1,5 +1,9 @@
 const courseSelect = document.getElementById("courseSelect");
 const courseDetails = document.getElementById("courseDetails");
+const viewDetailsBtn = document.getElementById("viewDetailsBtn");
+const mainContent = document.querySelector(".main-content");
+const placeholderSection = document.getElementById("placeholderSection");
+const detailsCard = document.getElementById("detailsCard");
 
 const courses = {
     se_mobile: {
@@ -49,6 +53,8 @@ Object.entries(courses).forEach(([courseId, course]) => {
     courseSelect.appendChild(option)
 })
 
+courseSelect.value = "se_webExpert"
+
 const detailPlaceholder = document.getElementById("detailPlaceholder")
 const displayAcceptance = document.getElementById("displayAcceptanceFee")
 const displayTuition = document.getElementById("displayTuition")
@@ -67,34 +73,44 @@ function showSelection() {
     const course = courses[selectedCourse]
 
     if (course) {
-        courseDetails.innerHTML = `Below is the breakdown  to study ${course.name} for ${course.months} months at ${course.levels} levels <br>`
+        courseDetails.innerHTML = `Below is the breakdown to study <strong>${course.name}</strong> for ${course.months} months in ${course.levels} level(s).`
 
-        displayAcceptance.textContent = `Acceptance fee is ₦${acceptanceFee.totalAcceptance.toLocaleString("en-NG")} which is compulsory to secure your admission`
+        displayAcceptance.textContent = `₦${acceptanceFee.totalAcceptance.toLocaleString("en-NG")}`
 
-        displayTuition.textContent = `Tuition fee  - ₦${course.tuitionFee.toLocaleString("en-NG")}`
+        displayTuition.textContent = `₦${course.tuitionFee.toLocaleString("en-NG")}`
 
         displayTuitionDuration.textContent = `${course.months} months duration - ${course.levels} level(s)`
 
         // Pay Once
         const moneySaved = course.tuitionFee * discount.fullPayment
         const payOnce = course.tuitionFee - moneySaved
-        payOnceView.innerHTML = `<small>Save - ₦${moneySaved.toLocaleString("en-NG")}</small>`
-        payOnceDiv.innerHTML = `Pay once - ₦${payOnce.toLocaleString("en-NG")}`
+        payOnceView.innerHTML = `<small>Save ₦${moneySaved.toLocaleString("en-NG")}</small>`
+        payOnceDiv.innerHTML = `₦${payOnce.toLocaleString("en-NG")}`
 
         // Pay Twice
         const moneySavedTwice = course.tuitionFee * discount.twoInstallment
         const payTwice = course.tuitionFee - moneySavedTwice
         const mainPayTwice = payTwice / 2
 
-        payTwiceView.innerHTML = `<small>Save - ₦${moneySavedTwice.toLocaleString("en-NG")}</small>`
-        payTwiceDiv.innerHTML = `Pay twice - ₦${mainPayTwice.toLocaleString("en-NG")}`
+        payTwiceView.innerHTML = `<small>Save ₦${moneySavedTwice.toLocaleString("en-NG")}</small>`
+        payTwiceDiv.innerHTML = `₦${mainPayTwice.toLocaleString("en-NG")}`
 
         // Pay Per Level
+        const payPerLevel = Math.floor(course.tuitionFee / course.levels)
+        payPerLevelView.innerHTML = ``
+        payPerLevelDiv.innerHTML = `₦${payPerLevel.toLocaleString("en-NG")}`
     }
 }
 
 courseSelect.addEventListener("change", showSelection)
 showSelection()
+
+// Show details when View Details button is clicked
+viewDetailsBtn.addEventListener("click", function() {
+    placeholderSection.classList.add("hidden");
+    detailsCard.style.display = "block";
+    showSelection();
+})
 
 // Main calculation
 console.log(discount.fullPayment)
