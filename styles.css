@@ -24,16 +24,16 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     background: linear-gradient(135deg, var(--dark-bg) 0%, var(--sidebar-bg) 100%);
-    min-height: 100vh;
+    height: 100vh;
     color: var(--text-dark);
     line-height: 1.6;
-    /* overflow-y: hidden; */
-
+    overflow: hidden;
 }
 
 .container {
     display: flex !important;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     gap: 0;
     width: 100% !important;
     max-width: 100% !important;
@@ -51,6 +51,8 @@ body {
     display: flex !important;
     flex-direction: column !important;
     gap: 50px;
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .logo-section {
@@ -176,6 +178,8 @@ body {
     justify-content: center;
     transition: opacity 0.4s ease;
     width: 80% !important;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .placeholder-section {
@@ -228,7 +232,21 @@ body {
     border: 1px solid var(--border-gray);
     width: 100%;
     max-width: 650px;
+    max-height: 100%;
+    overflow-y: auto;
     animation: slideIn 0.4s ease;
+}
+
+/* Custom scrollbar to make the internal card scrolling look neat */
+.card::-webkit-scrollbar {
+    width: 6px;
+}
+.card::-webkit-scrollbar-track {
+    background: transparent;
+}
+.card::-webkit-scrollbar-thumb {
+    background-color: var(--border-gray);
+    border-radius: 10px;
 }
 
 @keyframes slideIn {
@@ -468,9 +486,16 @@ body {
 }
 
 @media (max-width: 1024px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+    }
+
     .container {
         flex-direction: column !important;
         width: 100% !important;
+        height: auto;
+        overflow-y: visible;
     }
 
     .sidebar {
@@ -478,17 +503,23 @@ body {
         flex: 0 0 100% !important;
         padding: 40px 30px;
         gap: 40px;
+        height: auto;
+        overflow-y: visible;
     }
 
     .main-content {
         width: 100% !important;
         flex: 0 0 100% !important;
         padding: 40px 30px;
+        height: auto;
+        overflow-y: visible;
     }
 
     .card {
         padding: 35px;
         max-width: 100%;
+        max-height: none;
+        overflow-y: visible;
     }
 
     .payment-options {

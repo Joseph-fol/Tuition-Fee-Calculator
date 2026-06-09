@@ -6,6 +6,18 @@ const placeholderSection = document.getElementById("placeholderSection");
 const detailsCard = document.getElementById("detailsCard");
 const displayModal = document.getElementById("exampleModal");
 
+const detailPlaceholder = document.getElementById("detailPlaceholder")
+const displayAcceptance = document.getElementById("displayAcceptanceFee")
+const displayTuition = document.getElementById("displayTuition")
+const displayTuitionDuration = document.getElementById("displayTuitionDuration")
+const payOnceView = document.getElementById("payOnce")
+const payTwiceView = document.getElementById("payTwice")
+const payPerLevelView = document.getElementById("payPerLevel")
+const payOnceDiv = document.getElementById("payOnceDiv")
+const payTwiceDiv = document.getElementById("payTwiceDiv")
+const payPerLevelDiv = document.getElementById("payPerLevelDiv")
+
+
 let modalInstance;
 
 // Initialize modal when document is ready
@@ -45,6 +57,43 @@ const courses = {
         months: 6,
         levels: 3
     },
+
+    se_javaWithWeb: {
+        name: "Java Web Programming (With programming knowledge)",
+        tuitionFee: 800000,
+        months: 8,
+        levels: 4
+    },
+
+    se_javaWithoutWeb: {
+        name: "Java Web Programming (Without programming knowledge)",
+        tuitionFee: 1100000,
+        months: 12,
+        levels: 6
+    },
+    
+    netWorkCiscoAndMirk: {
+        name: "Networking Administration (Cisco and Mirkrotik)",
+        tuitionFee: 600000,
+        months: 6,
+        levels: 3
+    },
+
+    netWorkCisco: {
+        name: "Networking Administration (Cisco)",
+        tuitionFee: 400000,
+        months: 4,
+        levels: 2
+    },
+
+    netWorkMirkrotik: {
+        name: "Networking Administration (Mirkrotik)",
+        tuitionFee: 400000,
+        months: 4,
+        levels: 2
+    },
+
+
 }
 
 const acceptanceFee = {
@@ -64,27 +113,16 @@ Object.entries(courses).forEach(([courseId, course]) => {
     courseSelect.appendChild(option);
 });
 
-console.log("Courses loaded:", courseSelect.options.length);
+// console.log("Courses loaded:", courseSelect.options.length);
 
 // courseSelect.value = "se_webExpert"
-
-const detailPlaceholder = document.getElementById("detailPlaceholder")
-const displayAcceptance = document.getElementById("displayAcceptanceFee")
-const displayTuition = document.getElementById("displayTuition")
-const displayTuitionDuration = document.getElementById("displayTuitionDuration")
-const payOnceView = document.getElementById("payOnce")
-const payTwiceView = document.getElementById("payTwice")
-const payPerLevelView = document.getElementById("payPerLevel")
-const payOnceDiv = document.getElementById("payOnceDiv")
-const payTwiceDiv = document.getElementById("payTwiceDiv")
-const payPerLevelDiv = document.getElementById("payPerLevelDiv")
-
 detailPlaceholder.innerHTML = "Price Estimation will show here"
+
+
 
 function showSelection() {
     const selectedCourse = courseSelect.value;
     const course = courses[selectedCourse];
-    // console.log("showSelection called, selected:", selectedCourse, "course:", course);
 
     if (course) {
         courseDetails.innerHTML = `Below is the breakdown to study <strong>${course.name}</strong> for ${course.months} months in ${course.levels} level(s).`;
@@ -120,13 +158,11 @@ showSelection()
 // Ensure event listeners are attached when DOM is ready
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function() {
-        // console.log("DOM ready, attaching event listeners");
         if (viewDetailsBtn) {
             viewDetailsBtn.addEventListener("click", handleViewDetails);
         }
     });
 } else {
-    // console.log("DOM already loaded, attaching event listeners");
     if (viewDetailsBtn) {
         viewDetailsBtn.addEventListener("click", handleViewDetails);
     }
@@ -142,8 +178,6 @@ function handleViewDetails(e) {
             console.error("Modal instance not initialized");
         }
     } else {
-        // Show details if course is selected
-        // console.log("Course selected, showing details");
         placeholderSection.classList.add("hidden");
         detailsCard.style.display = "block";
         showSelection();
