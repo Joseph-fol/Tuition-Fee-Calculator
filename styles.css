@@ -27,6 +27,8 @@ body {
     min-height: 100vh;
     color: var(--text-dark);
     line-height: 1.6;
+    /* overflow-y: hidden; */
+
 }
 
 .container {
@@ -308,7 +310,7 @@ body {
 .fee-label {
     font-size: 14px;
     color: black;
-    font-weight: 600;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
@@ -353,9 +355,8 @@ body {
     font-weight: 500;
 }
 
-/* ============== PAYMENT SECTION ============== */
 .payment-section {
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 .payment-section h3 {
@@ -392,7 +393,7 @@ body {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--blue) 0%, var(--orange) 100%);
+    /* background: linear-gradient(90deg, var(--blue) 0%, var(--orange) 100%); */
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -409,7 +410,7 @@ body {
 
 .payment-type {
     font-size: 12px;
-    color: var(--text-muted);
+    color: var(--text-dark);
     font-weight: 700;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -417,7 +418,7 @@ body {
 }
 
 .payment-amount {
-    color: var(--blue);
+    color: var(--dark-bg);
     font-size: 22px;
     font-weight: 800;
     margin-bottom: 8px;
@@ -425,12 +426,11 @@ body {
 }
 
 .payment-save {
-    font-size: 12px;
-    color: var(--green);
+    font-size: 16px;
+    color: var(--orange);
     font-weight: 700;
 }
 
-/* ============== FOOTER NOTE ============== */
 .footer-note {
     text-align: center;
     padding: 16px 18px;
@@ -440,6 +440,7 @@ body {
     font-size: 13px;
     margin-top: 32px;
     display: flex;
+    line-break: auto;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -447,7 +448,7 @@ body {
     border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
-/* ============== RESPONSIVE ============== */
+
 @media (max-width: 1200px) {
     .sidebar {
         width: 38% !important;

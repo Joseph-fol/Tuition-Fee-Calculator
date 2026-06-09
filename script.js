@@ -143,7 +143,7 @@ function handleViewDetails(e) {
         }
     } else {
         // Show details if course is selected
-        console.log("Course selected, showing details");
+        // console.log("Course selected, showing details");
         placeholderSection.classList.add("hidden");
         detailsCard.style.display = "block";
         showSelection();
